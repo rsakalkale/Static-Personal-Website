@@ -1,0 +1,3 @@
+# ignore all .vscode folder
+.vscode
+!.vscode/launch.json
