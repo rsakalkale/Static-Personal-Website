@@ -127,8 +127,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Rohan Sakalkale</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/fa-svg-with-js.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fa-svg-with-js.css') }}" />
 </head>
 
 <body>
@@ -144,7 +144,7 @@
 
             <!-- Logo -->
             <div id="logo">
-                <span class="image avatar100"><img src="img/recentProfPic.JPG" alt="LinkedIn Profile Photo" /></span>
+                <span class="image avatar100"><img src="{{ url_for('static', filename='img/recentProfPic.JPG') }}" alt="LinkedIn Profile Photo" /></span>
 
             </div>
 
@@ -265,7 +265,7 @@
                 <div class="row">
                     <div class="5u 12u$(mobile)">
                         </br>
-                        <span class="image avatar100"><img src="img/Prof-Pic.jpg" alt="Personal Photo" /></span>
+                        <span class="image avatar100"><img src="{{ url_for('static', filename='img/Prof-Pic.jpg') }}" alt="Personal Photo" /></span>
                         <p></p>
                         <h4>Who am I?</h4>
                         <p>My name is Rohan, and I'm currently a Data Engineer at Google based out of the San Francisco
@@ -379,7 +379,7 @@
                                         </div>
                                     </div>
                                     <div class="project-image">
-                                        <img src="img/google-logo.png" alt="Google Logo">
+                                        <img src="{{ url_for('static', filename='img/google-logo.png') }}" alt="Google Logo">
                                         </a>
                                     </div>
                                 </div>
@@ -412,7 +412,7 @@
                                         </div>
                                     </div>
                                     <div class="project-image">
-                                        <img src="img/gd-logo.png" alt="Glassdoor Logo">
+                                        <img src="{{ url_for('static', filename='img/gd-logo.png') }}" alt="Glassdoor Logo">
                                         </a>
                                     </div>
                                 </div>
@@ -475,7 +475,7 @@
                                         </div>
                                     </div>
                                     <div class="project-image">
-                                        <img src="img/cvx-logo.png" alt="Chevron Logo">
+                                        <img src="{{ url_for('static', filename='img/cvx-logo.png') }}" alt="Chevron Logo">
                                         </a>
                                     </div>
                                 </div>
@@ -526,7 +526,7 @@
                 <div class="project-image">
                     <a href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/modern-data-warehouse"
                         target="_blank">
-                        <img src="img/modern-data-warehouse.png"
+                        <img src="{{ url_for('static', filename='img/modern-data-warehouse.png') }}"
                             alt="MDW Architecture - Source: MS Azure Documentation">
                     </a>
                 </div>
@@ -576,7 +576,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="img/bg-showcase-2.jpg" alt="Generic Code Image">
+                        <img src="{{ url_for('static', filename='img/bg-showcase-2.jpg') }}" alt="Generic Code Image">
                     </div>
                 </div>
             </li>
@@ -618,7 +618,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="img/Intel-logo.png" alt="Intel Logo">
+                        <img src="{{ url_for('static', filename='img/Intel-logo.png') }}" alt="Intel Logo">
                     </div>
                 </div>
             </li>
@@ -655,7 +655,7 @@
                     </div>
                     <div class="project-image">
                         <a href="https://www.texasdsp.org">
-                            <img src="img/TexasDSPBKBP.png" alt="Texas DSP Home Page">
+                            <img src="{{ url_for('static', filename='img/TexasDSPBKBP.png') }}" alt="Texas DSP Home Page">
                         </a>
                     </div>
                 </div>
@@ -693,7 +693,7 @@
                     </div>
                     <div class="project-image">
                         <a href="https://www.texaslawhelp.org">
-                            <img src="img/TxLawHelp.png" alt="Texas Law Help Home Page">
+                            <img src="{{ url_for('static', filename='img/TxLawHelp.png') }}" alt="Texas Law Help Home Page">
                         </a>
                     </div>
                 </div>
@@ -732,7 +732,7 @@
                     </div>
                     <div class="project-image">
                         <a href="http://final-project-333k-group10.azurewebsites.net/">
-                            <img src="img/LonghornBank.png" alt="MIS 333K - Longhorn Bank">
+                            <img src="{{ url_for('static', filename='img/LonghornBank.png') }}" alt="MIS 333K - Longhorn Bank">
                         </a>
                     </div>
                 </div>
@@ -784,7 +784,7 @@
                 <h2>CONTACT</h2>
             </header>
 
-            <form id="contact-form" action="https://formspree.io/f/xykqqwky" method="POST" class="contact-form">
+            <form id="contact-form" action="{{ url_for('contact') }}" method="POST" class="contact-form">
                 <div class="row gtr-uniform">
                     <div class="6u 12u$(mobile)">
                         <input type="text" name="name" id="name" placeholder="Your Name" required />
@@ -818,7 +818,7 @@
 
     </div>
 
-    <script type="text/javascript" src="js/fontawesome-all.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/fontawesome-all.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById('contact-form');
@@ -839,11 +839,13 @@
                         'Accept': 'application/json'
                     }
                 }).then(function (response) {
-                    if (response.ok) {
-                        window.location.href = 'success.html';
-                    } else {
-                        alert('There was a problem sending your message. Please try again.');
-                    }
+                    return response.json().then(function (data) {
+                        if (response.ok && data.success) {
+                            window.location.href = '{{ url_for("success") }}';
+                        } else {
+                            throw new Error(data.error || 'There was a problem sending your message. Please try again.');
+                        }
+                    });
                 }).catch(function () {
                     alert('There was a problem sending your message. Please try again.');
                 });
