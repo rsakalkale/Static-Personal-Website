@@ -1,93 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-MW6FQK32');</script>
-        <!-- End Google Tag Manager -->
-        <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Message Sent - Rohan Sakalkale</title>
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/fa-svg-with-js.css" />
-    </head>
 
-    <body>
-        <div id="header">
-            <!-- Google Tag Manager (noscript) -->
-            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW6FQK32"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-            <!-- End Google Tag Manager (noscript) -->
-            <div class="top">
-                <!-- Logo -->
-                <div id="logo">
-                    <span class="image avatar100"><img src="img/recentProfPic.JPG" alt="LinkedIn Profile Photo" /></span>
-                </div>
+<head>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+    </script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" id="silktide-consent-manager-css"
+        href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css"
+        integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+    <style id="silktide-consent-manager-overrides">
+        #stcm-wrapper {
+            --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+            --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
+            --primaryColor: #2E817D;
+            --backgroundColor: #ffffff;
+            --textColor: #4b494b;
+            --backdropBackgroundColor: #00000033;
+            --backdropBackgroundBlur: 0px;
+            --iconColor: #2e817d;
+            --iconBackgroundColor: #ffffff;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js"
+        integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq"
+        crossorigin="anonymous"></script>
+    <script>
+        window.silktideConsentManager.init({
+            backdrop: {
+                show: true
+            },
+            icon: {
+                position: "bottomLeft"
+            },
+            prompt: {
+                position: "bottomRight"
+            },
+            consentTypes: [
+                {
+                    id: "essential",
+                    label: "Essential",
+                    description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
+                    required: true,
+                    onAccept: function () {
+                        console.log('Add logic for the required Essential consent type here');
+                    }
+                },
+                {
+                    id: "analytics",
+                    label: "Analytics",
+                    description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
+                    required: false,
+                    gtag: [
+                        "ad_user_data",
+                        "analytics_storage"
+                    ],
+                    scripts: [
+                        {
+                            url: "https://www.googletagmanager.com/gtm.js?id=GTM-MW6FQK32",
+                            load: "async"
+                        },
+                        {
+                            url: "https://www.googletagmanager.com/gtag/js?id=G-RJJ47J2YQG",
+                            load: "async"
+                        }
+                    ],
+                    onAccept: function () {
+                        // Google Tag Manager (GTM-MW6FQK32)
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
 
-                <div id="logo">
-                    <h1 id="title">Rohan Sakalkale</h1>
-                    <p>Data Engineer at Google</p>
-                </div>
+                        // Google Analytics 4 (G-RJJ47J2YQG)
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag() { window.dataLayer.push(arguments); }
+                        gtag('js', new Date());
+                        gtag('config', 'G-RJJ47J2YQG');
+                    }
+                },
+                {
+                    id: "marketing",
+                    label: "Marketing",
+                    description: "<p>These cookies are used by us and our advertising partners to show you relevant ads on this site and elsewhere, and to measure how those campaigns perform.</p>",
+                    required: false,
+                    gtag: [
+                        "ad_storage",
+                        "ad_user_data",
+                        "ad_personalization"
+                    ]
+                }
+            ],
+            text: {
+                prompt: {
+                    description: "<p>We use cookies on our site to enhance your user experience, provide personalized content, and analyze our traffic.</p>",
+                    acceptAllButtonText: "Accept all",
+                    acceptAllButtonAccessibleLabel: "Accept all cookies",
+                    rejectNonEssentialButtonText: "Reject non-essential",
+                    rejectNonEssentialButtonAccessibleLabel: "Reject all non-essential cookies",
+                    preferencesButtonText: "Preferences",
+                    preferencesButtonAccessibleLabel: "Toggle preferences"
+                },
+                preferences: {
+                    title: "Customize your cookie preferences",
+                    description: "<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>",
+                    saveButtonText: "Save and close",
+                }
+            }
+        });
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MW6FQK32');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Message Sent - Rohan Sakalkale</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/fa-svg-with-js.css" />
+</head>
 
-                <!-- Nav -->
-                    <nav id="nav">
-                        <ul>
-                            <li><a href="index.html#about"><span>About Me<i class="fas fa-user fa-fw"></i></span></a></li>
-                            <li><a href="index.html#portfolio"><span>Portfolio<i class="fas fa-briefcase fa-fw"></i></span></a></li>
-                        </ul>
-                    </nav>
-
+<body>
+    <div id="header">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW6FQK32" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div class="top">
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar100"><img src="img/recentProfPic.JPG" alt="LinkedIn Profile Photo" /></span>
             </div>
 
-            <div class="bottom">
-
-                <!-- Social Icons -->
-                    <ul class="icons">
-                        <li><a href="https://www.facebook.com/rohsakalkale" class="label" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="https://github.com/rsakalkale" class="label" target="_blank"><i class="fab fa-github"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/rohan-sakalkale/" class="label" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
-
+            <div id="logo">
+                <h1 id="title">Rohan Sakalkale</h1>
+                <p>Data Engineer at Google</p>
             </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html#about"><span>About Me<i class="fas fa-user fa-fw"></i></span></a></li>
+                    <li><a href="index.html#portfolio"><span>Portfolio<i class="fas fa-briefcase fa-fw"></i></span></a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
 
-<!-- Main -->
-			<div id="main">
+        <div class="bottom">
 
-				<!-- Success Message -->
-					<section id="success" class="one dark cover">
-						<div class="container">
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li><a href="https://www.facebook.com/rohsakalkale" class="label" target="_blank"><i
+                            class="fab fa-facebook"></i></a></li>
+                <li><a href="https://github.com/rsakalkale" class="label" target="_blank"><i
+                            class="fab fa-github"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/rohan-sakalkale/" class="label" target="_blank"><i
+                            class="fab fa-linkedin"></i></a></li>
+            </ul>
 
-							<header>
-								<h2><strong>Thank you!</strong></h2>
-								<p>Your message has been sent successfully.</p>
-								<p>I'll get back to you as soon as possible.</p>
-							</header>
+        </div>
 
-							<footer>
-								<a href="index.html" class="button scrolly"><i class="fas fa-arrow-left"></i> <span class="network-name">  Back to Portfolio</span></a>
-							</footer>
+    </div>
 
-						</div>
-                    </section>
+    <!-- Main -->
+    <div id="main">
 
-			</div>
+        <!-- Success Message -->
+        <section id="success" class="one dark cover">
+            <div class="container">
 
-        <!-- Footer -->
-			<div id="footer">
+                <header>
+                    <h2><strong>Thank you!</strong></h2>
+                    <p>Your message has been sent successfully.</p>
+                    <p>I'll get back to you as soon as possible.</p>
+                </header>
 
-				<!-- Copyright -->
-					<ul class="copyright">
-						<li>© Copyright 2026 Rohan Sakalkale – All rights reserved. </li>
-					</ul>
+                <footer>
+                    <a href="index.html" class="button scrolly"><i class="fas fa-arrow-left"></i> <span
+                            class="network-name"> Back to Portfolio</span></a>
+                </footer>
 
-			</div>
+            </div>
+        </section>
 
-        <script type="text/javascript" src="js/fontawesome-all.js"></script>
-    </body>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>© Copyright 2026 Rohan Sakalkale – All rights reserved. </li>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript" src="js/fontawesome-all.js"></script>
+</body>
 
 </html>
