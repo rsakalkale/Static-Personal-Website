@@ -2,213 +2,79 @@
 <html lang="en">
 
 <head>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-        });
-    </script>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="stylesheet" id="silktide-consent-manager-css"
-        href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css"
-        integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
-    <style id="silktide-consent-manager-overrides">
-        #stcm-wrapper {
-            --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
-            --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
-            --primaryColor: #2E817D;
-            --backgroundColor: #ffffff;
-            --textColor: #4b494b;
-            --backdropBackgroundColor: #00000033;
-            --backdropBackgroundBlur: 0px;
-            --iconColor: #2e817d;
-            --iconBackgroundColor: #ffffff;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js"
-        integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq"
-        crossorigin="anonymous"></script>
-    <script>
-        window.silktideConsentManager.init({
-            backdrop: {
-                show: true
-            },
-            icon: {
-                position: "bottomLeft"
-            },
-            prompt: {
-                position: "bottomRight"
-            },
-            consentTypes: [
-                {
-                    id: "essential",
-                    label: "Essential",
-                    description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
-                    required: true,
-                    onAccept: function () {
-                        console.log('Add logic for the required Essential consent type here');
-                    }
-                },
-                {
-                    id: "analytics",
-                    label: "Analytics",
-                    description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
-                    required: false,
-                    gtag: [
-                        "ad_user_data",
-                        "analytics_storage"
-                    ],
-                    scripts: [
-                        {
-                            url: "https://www.googletagmanager.com/gtm.js?id=GTM-MW6FQK32",
-                            load: "async"
-                        },
-                        {
-                            url: "https://www.googletagmanager.com/gtag/js?id=G-RJJ47J2YQG",
-                            load: "async"
-                        }
-                    ],
-                    onAccept: function () {
-                        // Google Tag Manager (GTM-MW6FQK32)
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-
-                        // Google Analytics 4 (G-RJJ47J2YQG)
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag() { window.dataLayer.push(arguments); }
-                        gtag('js', new Date());
-                        gtag('config', 'G-RJJ47J2YQG');
-                    }
-                },
-                {
-                    id: "marketing",
-                    label: "Marketing",
-                    description: "<p>These cookies are used by us and our advertising partners to show you relevant ads on this site and elsewhere, and to measure how those campaigns perform.</p>",
-                    required: false,
-                    gtag: [
-                        "ad_storage",
-                        "ad_user_data",
-                        "ad_personalization"
-                    ]
-                }
-            ],
-            text: {
-                prompt: {
-                    description: "<p>We use cookies on our site to enhance your user experience, provide personalized content, and analyze our traffic.</p>",
-                    acceptAllButtonText: "Accept all",
-                    acceptAllButtonAccessibleLabel: "Accept all cookies",
-                    rejectNonEssentialButtonText: "Reject non-essential",
-                    rejectNonEssentialButtonAccessibleLabel: "Reject all non-essential cookies",
-                    preferencesButtonText: "Preferences",
-                    preferencesButtonAccessibleLabel: "Toggle preferences"
-                },
-                preferences: {
-                    title: "Customize your cookie preferences",
-                    description: "<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>",
-                    saveButtonText: "Save and close",
-                }
-            }
-        });
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MW6FQK32');</script>
-    <!-- End Google Tag Manager -->
+    {% include 'partials/analytics_head.html' %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Message Sent - Rohan Sakalkale</title>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fa-svg-with-js.css') }}" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body>
-    <div id="header">
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW6FQK32" height="0" width="0"
-                style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        <div class="top">
-            <!-- Logo -->
-            <div id="logo">
-                <span class="image avatar100"><img src="{{ url_for('static', filename='img/recentProfPic.JPG') }}" alt="LinkedIn Profile Photo" /></span>
-            </div>
+<body class="bg-[#0b0f19] text-slate-200 font-['Outfit'] h-screen flex flex-col justify-between selection:bg-teal-500/30 selection:text-teal-200">
+    {% include 'partials/analytics_body.html' %}
 
-            <div id="logo">
-                <h1 id="title">Rohan Sakalkale</h1>
-                <p>Data Engineer at Google</p>
-            </div>
-
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about"><span>About Me<i class="fas fa-user fa-fw"></i></span></a></li>
-                    <li><a href="{{ url_for('index') }}#portfolio"><span>Portfolio<i class="fas fa-briefcase fa-fw"></i></span></a>
-                    </li>
-                </ul>
+    <!-- Header / Sticky Navigation -->
+    <header class="w-full border-b border-slate-800/50 bg-[#0b0f19]/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+            <a href="{{ url_for('index') }}" class="text-lg font-bold tracking-wider text-slate-100 hover:text-teal-400 transition-colors">
+                ROHAN SAKALKALE
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="{{ url_for('index') }}#about" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">About</a>
+                <a href="{{ url_for('index') }}#experience" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Experience</a>
+                <a href="{{ url_for('index') }}#projects" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Projects</a>
+                <a href="{{ url_for('index') }}#contact" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Contact</a>
             </nav>
-
         </div>
+    </header>
 
-        <div class="bottom">
-
-            <!-- Social Icons -->
-            <ul class="icons">
-                <li><a href="https://www.facebook.com/rohsakalkale" class="label" target="_blank"><i
-                            class="fab fa-facebook"></i></a></li>
-                <li><a href="https://github.com/rsakalkale" class="label" target="_blank"><i
-                            class="fab fa-github"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/rohan-sakalkale/" class="label" target="_blank"><i
-                            class="fab fa-linkedin"></i></a></li>
-            </ul>
-
-        </div>
-
-    </div>
-
-    <!-- Main -->
-    <div id="main">
-
-        <!-- Success Message -->
-        <section id="success" class="one dark cover">
-            <div class="container">
-
-                <header>
-                    <h2><strong>Thank you!</strong></h2>
-                    <p>Your message has been sent successfully.</p>
-                    <p>I'll get back to you as soon as possible.</p>
-                </header>
-
-                <footer>
-                    <a href="{{ url_for('index') }}" class="button scrolly"><i class="fas fa-arrow-left"></i> <span
-                            class="network-name"> Back to Portfolio</span></a>
-                </footer>
-
+    <!-- Main Container -->
+    <main class="flex-grow flex items-center justify-center px-6 py-12">
+        <div class="max-w-md w-full bg-[#121826] border border-slate-800 rounded-3xl p-8 space-y-6 text-center shadow-xl">
+            <div class="mx-auto w-16 h-16 bg-teal-500/10 text-teal-400 rounded-full flex items-center justify-center border border-teal-500/25">
+                <i data-lucide="check" class="w-8 h-8"></i>
             </div>
-        </section>
-
-    </div>
+            <div class="space-y-2">
+                <h1 class="text-2xl font-bold text-slate-100">Thank you!</h1>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Your message has been sent successfully. I have received it and will get back to you as soon as possible.
+                </p>
+            </div>
+            <div>
+                <a href="{{ url_for('index') }}"
+                    class="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-500 hover:-translate-y-0.5 transition-all">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </main>
 
     <!-- Footer -->
-    <div id="footer">
+    <footer class="border-t border-slate-800/60 bg-[#070b13] py-8">
+        <div class="mx-auto max-w-5xl px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-500">
+                &copy; Copyright 2026 Rohan Sakalkale &bull; All rights reserved.
+            </p>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/rsakalkale" target="_blank" class="text-slate-400 hover:text-slate-200 transition-colors">
+                    <i data-lucide="github" class="w-4.5 h-4.5"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rohan-sakalkale/" target="_blank" class="text-slate-400 hover:text-teal-400 transition-colors">
+                    <i data-lucide="linkedin" class="w-4.5 h-4.5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
-        <!-- Copyright -->
-        <ul class="copyright">
-            <li>© Copyright 2026 Rohan Sakalkale – All rights reserved. </li>
-        </ul>
-
-    </div>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/fontawesome-all.js') }}"></script>
+    <script>
+        // Initialize Lucide SVGs
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

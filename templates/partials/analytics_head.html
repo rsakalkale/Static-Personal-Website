@@ -1,0 +1,120 @@
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+    });
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" id="silktide-consent-manager-css"
+    href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css"
+    integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
+<style id="silktide-consent-manager-overrides">
+    #stcm-wrapper {
+        --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+        --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
+        --primaryColor: #0d9488;
+        --backgroundColor: #1e293b;
+        --textColor: #f1f5f9;
+        --backdropBackgroundColor: #00000066;
+        --backdropBackgroundBlur: 2px;
+        --iconColor: #0d9488;
+        --iconBackgroundColor: #0f172a;
+    }
+    /* Hide Silktide branding credit links */
+    #stcm-wrapper .stcm-credit-link,
+    #stcm-wrapper .stcm-branding,
+    #stcm-wrapper a[href*="silktide.com"] {
+        display: none !important;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js"
+    integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq"
+    crossorigin="anonymous"></script>
+<script>
+    window.silktideConsentManager.init({
+        backdrop: {
+            show: true
+        },
+        icon: {
+            position: "bottomLeft"
+        },
+        prompt: {
+            position: "bottomRight"
+        },
+        consentTypes: [
+            {
+                id: "essential",
+                label: "Essential",
+                description: "<p>These cookies are necessary for the website to function properly and cannot be switched off.</p>",
+                required: true
+            },
+            {
+                id: "analytics",
+                label: "Analytics",
+                description: "<p>These cookies help us improve the site by tracking page popularity and visitor navigation.</p>",
+                required: false,
+                gtag: [
+                    "ad_user_data",
+                    "analytics_storage"
+                ],
+                scripts: [
+                    {
+                        url: "https://www.googletagmanager.com/gtm.js?id=GTM-MW6FQK32",
+                        load: "async"
+                    },
+                    {
+                        url: "https://www.googletagmanager.com/gtag/js?id=G-RJJ47J2YQG",
+                        load: "async"
+                    }
+                ],
+                onAccept: function () {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { window.dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-RJJ47J2YQG');
+                }
+            },
+            {
+                id: "marketing",
+                label: "Marketing",
+                description: "<p>These cookies are used to measure campaign performance and show relevant ads.</p>",
+                required: false,
+                gtag: [
+                    "ad_storage",
+                    "ad_user_data",
+                    "ad_personalization"
+                ]
+            }
+        ],
+        text: {
+            prompt: {
+                description: "<p>We use cookies on our site to enhance your experience, customize content, and analyze our traffic.</p>",
+                acceptAllButtonText: "Accept all",
+                rejectNonEssentialButtonText: "Reject non-essential",
+                preferencesButtonText: "Preferences"
+            },
+            preferences: {
+                // Remove the standard "Get this consent manager for free" branding text
+                creditLinkText: "",
+                creditLinkAccessibleLabel: ""
+            }
+        }
+    });
+</script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MW6FQK32');</script>
+<!-- End Google Tag Manager -->

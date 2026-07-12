@@ -1,0 +1,13 @@
+{
+  "name": "rohan-portfolio-tailwind",
+  "version": "1.0.0",
+  "description": "Tailwind configuration for static personal website",
+  "main": "app.py",
+  "scripts": {
+    "build": "tailwindcss -i ./css/input.css -o ./css/main.css --minify",
+    "watch": "tailwindcss -i ./css/input.css -o ./css/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

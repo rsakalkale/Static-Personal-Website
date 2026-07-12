@@ -12,3 +12,4 @@ instance/
 .pytype/
 .coverage
 htmlcov/
+node_modules/

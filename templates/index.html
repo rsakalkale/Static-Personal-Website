@@ -1,843 +1,488 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-        });
-    </script>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="stylesheet" id="silktide-consent-manager-css"
-        href="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.css"
-        integrity="sha384-EdMq+R+YOnsbelo08wPenoTlnxbAyxI11NMIxzugx/qAsbh64KcOkqxYqq6pfvO/" crossorigin="anonymous">
-    <style id="silktide-consent-manager-overrides">
-        #stcm-wrapper {
-            --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
-            --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
-            --primaryColor: #2E817D;
-            --backgroundColor: #ffffff;
-            --textColor: #4b494b;
-            --backdropBackgroundColor: #00000033;
-            --backdropBackgroundBlur: 0px;
-            --iconColor: #2e817d;
-            --iconBackgroundColor: #ffffff;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/gh/silktide/consent-manager@v2.0.1/silktide-consent-manager.js"
-        integrity="sha384-5Pt34uiIbCsvfiiZXoLi4HRf/YBXjr9c8e+gYeVo9smUaInNHYVtc8NZ8wUnXJIq"
-        crossorigin="anonymous"></script>
-    <script>
-        window.silktideConsentManager.init({
-            backdrop: {
-                show: true
-            },
-            icon: {
-                position: "bottomLeft"
-            },
-            prompt: {
-                position: "bottomRight"
-            },
-            consentTypes: [
-                {
-                    id: "essential",
-                    label: "Essential",
-                    description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
-                    required: true,
-                    onAccept: function () {
-                        console.log('Add logic for the required Essential consent type here');
-                    }
-                },
-                {
-                    id: "analytics",
-                    label: "Analytics",
-                    description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
-                    required: false,
-                    gtag: [
-                        "ad_user_data",
-                        "analytics_storage"
-                    ],
-                    scripts: [
-                        {
-                            url: "https://www.googletagmanager.com/gtm.js?id=GTM-MW6FQK32",
-                            load: "async"
-                        },
-                        {
-                            url: "https://www.googletagmanager.com/gtag/js?id=G-RJJ47J2YQG",
-                            load: "async"
-                        }
-                    ],
-                    onAccept: function () {
-                        // Google Tag Manager (GTM-MW6FQK32)
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-
-                        // Google Analytics 4 (G-RJJ47J2YQG)
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag() { window.dataLayer.push(arguments); }
-                        gtag('js', new Date());
-                        gtag('config', 'G-RJJ47J2YQG');
-                    }
-                },
-                {
-                    id: "marketing",
-                    label: "Marketing",
-                    description: "<p>These cookies are used by us and our advertising partners to show you relevant ads on this site and elsewhere, and to measure how those campaigns perform.</p>",
-                    required: false,
-                    gtag: [
-                        "ad_storage",
-                        "ad_user_data",
-                        "ad_personalization"
-                    ]
-                }
-            ],
-            text: {
-                prompt: {
-                    description: "<p>We use cookies on our site to enhance your user experience, provide personalized content, and analyze our traffic.</p>",
-                    acceptAllButtonText: "Accept all",
-                    acceptAllButtonAccessibleLabel: "Accept all cookies",
-                    rejectNonEssentialButtonText: "Reject non-essential",
-                    rejectNonEssentialButtonAccessibleLabel: "Reject all non-essential cookies",
-                    preferencesButtonText: "Preferences",
-                    preferencesButtonAccessibleLabel: "Toggle preferences"
-                },
-                preferences: {
-                    title: "Customize your cookie preferences",
-                    description: "<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>",
-                    saveButtonText: "Save and close",
-                }
-            }
-        });
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MW6FQK32');</script>
-    <!-- End Google Tag Manager -->
+    {% include 'partials/analytics_head.html' %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rohan Sakalkale</title>
+    <title>Rohan Sakalkale | Data Engineer</title>
+    <meta name="description" content="Portfolio of Rohan Sakalkale, Data Engineer at Google. Showcasing technical depth, measurement architecture, pipeline optimization, and software development." />
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fa-svg-with-js.css') }}" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body>
-    <div id="header">
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW6FQK32" height="0" width="0"
-                style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        <div class="top">
-            <!-- Logo 
-                <div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="rohan-sakalkale-7a2120ba"><a class="LI-simple-link" href='https://www.linkedin.com/in/rohan-sakalkale-7a2120ba?trk=profile-badge'>Rohan Sakalkale</a></div>
-                -->
+<body class="bg-[#0b0f19] text-slate-200 font-['Outfit'] selection:bg-teal-500/30 selection:text-teal-200">
+    {% include 'partials/analytics_body.html' %}
 
-            <!-- Logo -->
-            <div id="logo">
-                <span class="image avatar100"><img src="{{ url_for('static', filename='img/recentProfPic.JPG') }}" alt="LinkedIn Profile Photo" /></span>
-
-            </div>
-
-            <div id="logo">
-                <h1 id="title">Rohan Sakalkale</h1>
-                <p>Data Engineer at Google</p>
-            </div>
-
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <!--<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span>Intro<i class="fas fa-home fa-fw"></i></span></a></li>-->
-                    <li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span>About Me<i
-                                    class="fas fa-user fa-fw"></i></span></a></li>
-                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span>Portfolio<i
-                                    class="fas fa-briefcase fa-fw"></i></span></a></li>
-                    <!--<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span>Contact<i class="fas fa-envelope fa-fw"></i></span></a></li>-->
-                    <!--<a href="#top" id="top-link" class="skel-layers-ignoreHref"><i class="fab fa-home"></i><span class="network-name">Intro</span></a>-->
-
-                    <!--<li><a href="#workexp" id="workexp-link" class="skel-layers-ignoreHref"><span>Work Experience<i class="fas fa-briefcase fa-fw"></i></span></a></li>-->
-
-
-                </ul>
+    <!-- Header / Sticky Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-[#0b0f19]/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+            <a href="#hero" class="text-lg font-bold tracking-wider text-slate-100 hover:text-teal-400 transition-colors">
+                ROHAN SAKALKALE
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">About</a>
+                <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Skills</a>
+                <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Experience</a>
+                <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Projects</a>
+                <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors">Contact</a>
             </nav>
-
-        </div>
-
-        <div class="bottom">
-
-            <!-- Social Icons -->
-            <ul class="icons">
-                <!--<li><i href="#" class="fa fa-twitter"><span class="label">Twitter</span></i></li>-->
-
-                <li><a href="https://www.facebook.com/rohsakalkale" class="label" target="_blank"><i
-                            class="fab fa-facebook"></i></a></li>
-                <li><a href="https://github.com/rsakalkale" class="label" target="_blank"><i
-                            class="fab fa-github"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/rohan-sakalkale/" class="label" target="_blank"><i
-                            class="fab fa-linkedin"></i></a></li>
-                <!--<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>-->
-            </ul>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- Main -->
-    <div id="main">
-
-        <!-- Intro -->
-        <section id="top" class="one dark cover">
-            <div class="container">
-
-                <header>
-                    <h2><strong>Hi, my name is Rohan Sakalkale!</strong></h2>
-                    <p>I'm a Data Engineer located in the Bay Area.</p>
-                </header>
-
-                <footer>
-                    <a href="https://www.linkedin.com/in/rohan-sakalkale/" class="button scrolly" target="_blank"><i
-                            class="fab fa-linkedin"></i> <span class="network-name"> Connect with me on
-                            LinkedIn.</span></a>
-                </footer>
-
+            <!-- Mobile Menu Toggle Button (Scroll-based navigation handles mobile links smoothly) -->
+            <div class="flex md:hidden items-center gap-4">
+                <a href="#about" class="p-1 text-slate-400 hover:text-teal-400"><i data-lucide="user" class="w-5 h-5"></i></a>
+                <a href="#experience" class="p-1 text-slate-400 hover:text-teal-400"><i data-lucide="briefcase" class="w-5 h-5"></i></a>
+                <a href="#contact" class="p-1 text-slate-400 hover:text-teal-400"><i data-lucide="mail" class="w-5 h-5"></i></a>
             </div>
-        </section>
+        </div>
+    </header>
 
+    <!-- Main Container -->
+    <main class="mx-auto max-w-5xl px-6 py-12 space-y-24">
 
-        <!-- About Me -->
-        <section id="about" class="three">
-            <div class="container">
-
-                <header>
-                    <h2>ABOUT ME</h2>
-                </header>
-                <div class="row">
-                    <div class="3u 12u$(mobile)">
-                        <h4>Web Dev</h4>
-                        </br>
-                        <div class="hex-wrap">
-                            <div class="hexagon">
-                                <i class="fab fa-connectdevelop fa-2x" style="color: #F8F9FA;"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="3u 12u$(mobile)">
-                        <h4>Programming</h4>
-                        </br>
-                        <div class="hex-wrap">
-                            <div class="hexagon">
-                                <i class="fas fa-file-code fa-2x" style="color:#F8F9FA;"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="3u 12u$(mobile)">
-                        <h4>Data & APIs</h4>
-                        </br>
-                        <div class="hex-wrap">
-                            <div class="hexagon">
-                                <i class="fas fa-database fa-2x" style="color: #F8F9FA;"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="3u 12u$(mobile)">
-                        <h4>Analytics</h4>
-                        </br>
-                        <div class="hex-wrap">
-                            <div class="hexagon">
-                                <i class="fas fa-chart-bar fa-2x" style="color:#F8F9FA;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="5u 12u$(mobile)">
-                        </br>
-                        <span class="image avatar100"><img src="{{ url_for('static', filename='img/Prof-Pic.jpg') }}" alt="Personal Photo" /></span>
-                        <p></p>
-                        <h4>Who am I?</h4>
-                        <p>My name is Rohan, and I'm currently a Data Engineer at Google based out of the San Francisco
-                            Bay Area. I graduated from the University of Texas at Austin in 2018 with a BBA in
-                            Management Information Systems and a minor in Computer Science.</p>
-                    </div>
-
-                    <div class="7u 12u$(mobile)">
-                        </br>
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:85%">
-                                <div class="tag bold flex">Python</div>
-                            </div>
-                            <span>85%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:85%">
-                                <div class="tag bold flex">SQL</div>
-                            </div>
-                            <span>85%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:80%">
-                                <div class="tag bold flex">Java</div>
-                            </div>
-                            <span>80%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:80%">
-                                <div class="tag bold flex">C#</div>
-                            </div>
-                            <span>80%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:75%">
-                                <div class="tag bold flex">Cloud</div>
-                            </div>
-                            <span>75%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:70%">
-                                <div class="tag bold flex">Spark</div>
-                            </div>
-                            <span>70%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:65%">
-                                <div class="tag bold flex">PHP</div>
-                            </div>
-                            <span>65%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:60%">
-                                <div class="tag bold flex">JavaScript</div>
-                            </div>
-                            <span>60%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:50%">
-                                <div class="tag bold flex">CSS</div>
-                            </div>
-                            <span>50%</span>
-                        </div>
-
-                        <div class="bar flex">
-                            <div class="bar fill" style="width:50%">
-                                <div class="tag bold flex">HTML</div>
-                            </div>
-                            <span>50%</span>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Portfolio -->
-        <section id="portfolio" class="two">
-            <header>
-                <h2>PORTFOLIO</h2>
-            </header>
-
-            <div class="site-main-inner">
-
-                <div class="main-section portfolio-section">
-
-                    <div class="timeline portfolio-timeline">
-                        <ul>
-
-                            <!--GD Senior DE-->
-                            <li class="timeline_element project">
-                                <div class="timeline_element-date">
-                                    <time class="timeline_element-date-text">Jul 2022 - Present</time>
-                                </div>
-
-                                <div class="timeline_element-contents">
-                                    <div class="project-text">
-                                        <div class="project-title">Google</div>
-                                        <div class="project-subtitle">Data Engineer</div>
-                                        <div class="project-description">
-                                            <!--To be entered at a later date-->
-                                        </div>
-                                    </div>
-                                    <div class="project-image">
-                                        <img src="{{ url_for('static', filename='img/google-logo.png') }}" alt="Google Logo">
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <!--GD Senior DE-->
-                            <li class="timeline_element project">
-                                <div class="timeline_element-date">
-                                    <time class="timeline_element-date-text">Jan 2022 - Jul 2022</time>
-                                </div>
-
-                                <div class="timeline_element-contents">
-                                    <div class="project-text">
-                                        <div class="project-title">Glassdoor</div>
-                                        <div class="project-subtitle">Senior Data Engineer</div>
-                                        <div class="project-description">
-
-                                            <ul>
-                                                <li>Overhauled outdated infrastructure and developed data products to
-                                                    power Employer Center feature through highly performant queries,
-                                                    resulting in a cost savings of $30K per month</li>
-                                                </br>
-                                                <li>Led initiative to integrate Fishbowl data in order provide post and
-                                                    topic insights to Glassdoor customers and internally track site-wide
-                                                    engagement</li>
-                                                </br>
-                                            </ul>
-                                            </br>
-
-                                        </div>
-                                    </div>
-                                    <div class="project-image">
-                                        <img src="{{ url_for('static', filename='img/gd-logo.png') }}" alt="Glassdoor Logo">
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <!--CVX Senior DE - Horizons-->
-                            <li class="timeline_element project">
-                                <div class="timeline_element-date">
-                                    <time class="timeline_element-date-text">Jan 2021 - Jan 2022</time>
-                                </div>
-
-                                <div class="timeline_element-contents">
-                                    <div class="project-text">
-                                        <div class="project-title">Chevron</div>
-                                        <div class="project-subtitle">Senior Data Engineer</div>
-                                        <div class="project-description">
-
-                                            <ul>
-                                                <li>Designed a data warehouse using a star schema to simplify business
-                                                    reporting logic and eliminate complex queries upon migrating
-                                                    on-premise ServiceNow data to Synapse dedicated SQL pools</li>
-                                                </br>
-                                                <li>Built over 30 ETL pipelines to generate type 2 dimensions off
-                                                    several gigabytes of data and loaded it into the data warehouse</li>
-                                                </br>
-                                                <li>Developed models and pipelines to serve up a one-stop-shop solution
-                                                    to provide senior leadership with metrics for each digital platform,
-                                                    such as cost, number of API integrations, user satisfaction</li>
-                                                </br>
-                                                <li>Created fully automated CI pipelines and established git workflow
-                                                    for all teams within the release train to follow</li>
-                                                </br>
-                                                <li>Developed a serverless function app to parse and output schemas of
-                                                    entities from the enterprise common data model in order to ensure
-                                                    structural and semantic consistency across disparate applications
-                                                </li>
-                                                </br>
-                                                <li>Evaluated and piloted data governance tools with business
-                                                    stakeholders based on criteria such as implementation complexity,
-                                                    ease of integration, and cost of long-term maintenance</li>
-                                                </br>
-                                                <li>Configured Ansible role to tag and capture end-to-end data lineage
-                                                    for over 900 Azure Data Factory instances enterprise-wide</li>
-                                                </br>
-                                                <li>Engineered API to expose data containing Chevron owned real estate
-                                                    assets and environmental sites for consumption by other business
-                                                    units, resulting in faster time-to-insights and streamlined access
-                                                    to data</li>
-                                                </br>
-                                                <li>Managed migration from Azure Data Lake Store to Gen 2 Lake in order
-                                                    to take advantage of new Azure capabilities dedicated to big data
-                                                    analytics</li>
-                                                </br>
-                                                <li>Refactored API calls and data transformations from C# to Python,
-                                                    simplifying the codebase and reducing technical debt </li>
-
-                                            </ul>
-                                            </br>
-
-                                        </div>
-                                    </div>
-                                    <div class="project-image">
-                                        <img src="{{ url_for('static', filename='img/cvx-logo.png') }}" alt="Chevron Logo">
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <!--CVX Rotation 2 - Horizons-->
-                            <li class="timeline_element project">
-                                <div class="timeline_element-date">
-                                    <time class="timeline_element-date-text">Jan 2020 - Jan 2021</time>
-                                </div>
-
-                                <div class="timeline_element-contents">
-                                    <div class="project-text">
-                                        <div class="project-title">Chevron</div>
-                                        <div class="project-subtitle">Data Engineer / Analytics Developer</div>
-                                        <div class="project-description">
-                                            <p>Chevron has embarked on a journey of digital transformation in order to
-                                                deliver more value to the business. A couple of the core imperatives of
-                                                transformation are data being viewed as an asset and the vision of an
-                                                enterprise-wide data lake. The image to the right (or below if being
-                                                viewed on a mobile device) gives an overview on the type of MDW
-                                                architecture Here are a few ways that I contributed to the
-                                                afformentioned imperatives:</p>
-
-                                            <ul>
-                                                <li>
-                                                    Worked on migrating on-premise ETL pipelines to cloud-provisioned
-                                                    servers via a modern data warehouse architecture providing an
-                                                    average cost savings of 30 to 50 percent
-                                                </li>
-                                                </br>
-                                                <li>
-                                                    Co-engineered an API to "geocode" Chevron owned real estate assets
-                                                    and environmental sites data for consumption by other business units
-                                                    delivering faster time-to-insights and democratized access to the
-                                                    data products</li>
-                            </li>
-                            </br>
-                            <li>
-                                Evaluated Azure Data Catalog as the data governance tools based on criteria such as
-                                implementation complexity, ease of integration, and cost of long-term maintenance
-                            </li>
-
-                        </ul>
-                        </br>
-
-                    </div>
-                </div>
-                <div class="project-image">
-                    <a href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/modern-data-warehouse"
-                        target="_blank">
-                        <img src="{{ url_for('static', filename='img/modern-data-warehouse.png') }}"
-                            alt="MDW Architecture - Source: MS Azure Documentation">
+        <!-- Hero Section -->
+        <section id="hero" class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 py-12 md:py-20">
+            <div class="flex-1 space-y-6 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white">
+                    Hi, I'm <span class="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">Rohan</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-medium text-slate-300">
+                    Data Engineer at <span class="text-slate-100 border-b-2 border-teal-500/40">Google</span>
+                </p>
+                <p class="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
+                    Based in the San Francisco Bay Area. I architect scalable data warehouses, build automated measurement systems, and design high-freshness pipelines to drive revenue and operational excellence.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+                    <a href="https://www.linkedin.com/in/rohan-sakalkale/" target="_blank"
+                        class="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white shadow-md hover:bg-teal-500 hover:shadow-teal-500/10 hover:-translate-y-0.5 transition-all">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i> Connect on LinkedIn
+                    </a>
+                    <a href="#experience"
+                        class="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/40 px-5 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:border-slate-600 hover:-translate-y-0.5 transition-all">
+                        View Portfolio
                     </a>
                 </div>
             </div>
-            </li>
+            <div class="flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500 opacity-30 blur-md group-hover:opacity-50 transition-opacity"></div>
+                    <img src="{{ url_for('static', filename='img/recentProfPic.JPG') }}" alt="Rohan Profile Photo"
+                        class="relative w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-2 border-slate-700/80 shadow-2xl" />
+                </div>
+            </div>
+        </section>
 
-            <!--CVX Rotation 1 - Horizons-->
-            <li class="timeline_element project">
-                <div class="timeline_element-date">
-                    <time class="timeline_element-date-text">Jul 2018 - Dec 2019</time>
+        <!-- About Me Section -->
+        <section id="about" class="space-y-8 scroll-mt-24">
+            <div class="border-l-4 border-teal-500 pl-4">
+                <h2 class="text-2xl font-bold tracking-wider text-slate-100 uppercase">About Me</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-2 flex justify-center">
+                    <img src="{{ url_for('static', filename='img/Prof-Pic.jpg') }}" alt="Personal Photo"
+                        class="w-full max-w-[280px] rounded-2xl border border-slate-800 object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <div class="md:col-span-3 space-y-4 text-slate-300 leading-relaxed">
+                    <h3 class="text-xl font-semibold text-slate-200">Who am I?</h3>
+                    <p>
+                        I graduated from the University of Texas at Austin with a BBA in Management Information Systems (McCombs School of Business) and a minor in Computer Science.
+                    </p>
+                    <p>
+                        Throughout my career spanning Chevron, Glassdoor, and now Google, I have specialized in bridging the gap between business operations and highly technical data architectures in order to drive revenue growth. I enjoy designing clean, scalable ETL pipelines, optimizing data footprints, and deploying custom software tools that make engineering operations seamless.
+                    </p>
+                    <p class="text-slate-400 text-sm italic">
+                        Beyond core data engineering, I have a passion for building AI-driven applications, interactive maps, and analytics dashboards.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skill Domains -->
+        <section id="skills" class="space-y-8 scroll-mt-24">
+            <div class="border-l-4 border-teal-500 pl-4">
+                <h2 class="text-2xl font-bold tracking-wider text-slate-100 uppercase">Skill Domains</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Skill Group 1 -->
+                <div class="bg-[#121826] border border-slate-800/80 rounded-2xl p-6 space-y-4 hover:border-slate-700 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="p-3 bg-teal-500/10 text-teal-400 rounded-xl">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100">Data Engineering</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Designing reliable warehouses, modeling schemas, and scheduling complex ETL workflows.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Airflow</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Snowflake</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Spark</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Databricks</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Azure Synapse</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Data Warehousing</span>
+                    </div>
                 </div>
 
-                <div class="timeline_element-contents">
-                    <div class="project-text">
-                        <div class="project-title">Chevron</div>
-                        <div class="project-subtitle">Software Engineer</div>
-                        <div class="project-description">
-                            <p>As a college new hire, I was given a great opportunity to work directly with a business
-                                unit in Downstream & Chemicals. I primarily developed on the Salesforce platform, where
-                                I attained two certifications:
-                                <a href="https://trailhead.salesforce.com/credentials/certification-detail-print?searchString=fp7jEUSKomT9ZNmfCnpXomBrLyG/WaMqOuR3qpERG864y+ZsvRER/aQh+RxJxwrZ"
-                                    target="_blank">Salesforce Certified Platform Developer I (Cred ID: 20582277) and
-                                    Salesforce Certified Admin (Cred ID: 19884277)</a>.
-                                <br /><br />While I was on the team, I worked on two major efforts: overhauling
-                                aniquated processes in Sales Cloud and implementing a B2B commerce portal with
-                                integrations and a document management system. Here are some of the results from both of
-                                those efforts:
-                            </p>
+                <!-- Skill Group 2 -->
+                <div class="bg-[#121826] border border-slate-800/80 rounded-2xl p-6 space-y-4 hover:border-slate-700 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="p-3 bg-teal-500/10 text-teal-400 rounded-xl">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100">AdTech & Measurement</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Unifying first-party consent signals, configuring tag gateway engines, and optimizing attribution models.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Google Tag Gateway</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Data Manager</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">1PD Attribution</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Consent Management</span>
+                    </div>
+                </div>
 
-                            <ul class="bullets">
-                                <li>
-                                    Designed and implemented an API integration pattern which linked SAP and Azure to a
-                                    B2B Commerce portal in Salesforce to provide on-demand PDF generation
-                                </li>
-                                </br>
-                                <li>
-                                    Led off-shore resources through bi-weekly check-ins and code reviews to champion
-                                    Chevron’s development standards, best practices, and digital imperatives
-                                </li>
-                                </br>
-                                <li>
-                                    Orchestrated and developed a strategy to modernize Sales Cloud through dark
-                                    deployment resulting in a seamless integration into production with zero downtime
-                                </li>
-                            </ul>
+                <!-- Skill Group 3 -->
+                <div class="bg-[#121826] border border-slate-800/80 rounded-2xl p-6 space-y-4 hover:border-slate-700 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="p-3 bg-teal-500/10 text-teal-400 rounded-xl">
+                            <i data-lucide="terminal" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100">Development & DevOps</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Writing performant algorithms, setting up automated CI/CD pipelines, and orchestrating containers.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Python</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">SQL</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Java / C#</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Docker</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">Kubernetes</span>
+                        <span class="px-2.5 py-1 text-xs font-semibold bg-slate-800 text-slate-300 rounded-lg">CI/CD Pipelines</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Experience Section -->
+        <section id="experience" class="space-y-8 scroll-mt-24">
+            <div class="border-l-4 border-teal-500 pl-4">
+                <h2 class="text-2xl font-bold tracking-wider text-slate-100 uppercase">Work Experience</h2>
+            </div>
+            
+            <div class="relative border-l border-slate-800 pl-6 ml-4 space-y-12">
+                <!-- Dot overlay style -->
+                
+                <!-- Google Role 1 -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-teal-500"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/google-logo.png') }}" alt="Google Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Google</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">Oct 2024 - Present</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">Data Engineer (Measurement & Attribution)</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Spearheaded the technical design and metrics framework for a global tagging and attribution initiative, unifying disparate data signals to identify and quantify multi-billion dollar market opportunities.</li>
+                        <li>Architected a self-service diagnostic suite to validate and troubleshoot tagging implementations, automating manual support workflows and safeguarding billions in at-risk advertising revenue.</li>
+                        <li>Led the design of an executive-level analytics dashboard and reporting framework, consolidating first-party ingestion signals to drive platform adoption and improve advertiser attribution.</li>
+                        <li>Modernized the core measurement data warehouse by migrating siloed data pipelines to a centralized workflow, reducing the storage footprint by 22% while maintaining a 99% service-level objective (SLO) for data freshness.</li>
+                    </ul>
+                </div>
+
+                <!-- Google Role 2 -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-slate-700"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/google-logo.png') }}" alt="Google Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Google</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">Jul 2022 - Oct 2024</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">Data Engineer (Global Infrastructure)</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Designed and engineered a scalable customer reporting platform for newly onboarded advertiser segments, boosting product activation rates by 15% quarter-over-quarter.</li>
+                        <li>Established a standardized technical intake and prioritization framework for business strategy and operational teams, streamlining feature delivery and alignment.</li>
+                        <li>Automated pipeline deployment workflows by developing Python-based template generators, reducing deployment cycle times and eliminating manual scripting overhead.</li>
+                    </ul>
+                </div>
+
+                <!-- Glassdoor Role -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-slate-700"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/gd-logo.png') }}" alt="Glassdoor Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Glassdoor</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">Jan 2022 - Jun 2022</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">Senior Data Engineer</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Overhauled outdated infrastructure and developed data products to power the Employer Center feature through highly performant queries, resulting in a cost savings of $30K per month.</li>
+                        <li>Led initiative to integrate Fishbowl data in order to provide post and topic insights to Glassdoor customers and internally track site-wide engagement.</li>
+                        <li>Implemented data monitoring and alerting system using Apache Airflow and an in-house anomaly detection tool, improving data quality and reliability.</li>
+                    </ul>
+                </div>
+
+                <!-- Chevron Role 1 -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-slate-700"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/cvx-logo.png') }}" alt="Chevron Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Chevron</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">Jan 2021 - Jan 2022</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">Senior Data Engineer</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Designed a data warehouse using a star schema to simplify business reporting logic and eliminate complex queries upon migrating on-premise ServiceNow data to Synapse dedicated SQL pools.</li>
+                        <li>Built over 30 ETL pipelines to generate type 2 dimensions off several gigabytes of data and loaded it into the data warehouse.</li>
+                        <li>Developed models and pipelines to serve up a one-stop-shop solution to provide senior leadership with metrics for each digital platform, such as cost, number of API integrations, and user satisfaction.</li>
+                        <li>Created fully automated CI pipelines and established git workflow for all teams within the release train to follow.</li>
+                    </ul>
+                </div>
+
+                <!-- Chevron Role 2 -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-slate-700"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/cvx-logo.png') }}" alt="Chevron Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Chevron</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">Jan 2020 - Jan 2021</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">Data Engineer / Analytics Developer</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Migrated on-premise ETL pipelines to cloud-provisioned servers via a modern data warehouse architecture providing an average cost savings of 30 to 50 percent.</li>
+                        <li>Co-engineered an API to "geocode" Chevron owned real estate assets and environmental sites data for consumption by other business units.</li>
+                    </ul>
+                </div>
+
+                <!-- Chevron Role 3 -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-slate-700"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/cvx-logo.png') }}" alt="Chevron Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Chevron</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">Jul 2018 - Dec 2019</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">Software Engineer</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Designed and implemented API integration pattern linking SAP and Azure to a B2B Commerce portal in Salesforce for on-demand PDF generation.</li>
+                        <li>Orchestrated and developed a strategy to modernize Sales Cloud through dark deployment resulting in seamless integration into production with zero downtime.</li>
+                    </ul>
+                </div>
+
+                <!-- Intel Role -->
+                <div class="relative space-y-3">
+                    <span class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#0b0f19] border-2 border-slate-700"></span>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ url_for('static', filename='img/Intel-logo.png') }}" alt="Intel Logo" class="w-6 h-6 object-contain" />
+                            <h3 class="text-lg font-bold text-slate-100">Intel</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">May 2016 - Jun 2018</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-teal-400">SDG Technical Intern</h4>
+                    <ul class="list-disc pl-5 text-sm text-slate-300 space-y-2 leading-relaxed">
+                        <li>Constructed over 50 pre-silicon design indicators through SQL and PowerPivot for mobile System-on-Chip (SoC) processors used by senior management to track project milestones.</li>
+                        <li>Optimized reports and scheduling data using robotic process automation in VBA, saving analysts critical validation hours.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="space-y-8 scroll-mt-24">
+            <div class="border-l-4 border-teal-500 pl-4">
+                <h2 class="text-2xl font-bold tracking-wider text-slate-100 uppercase">Selected Projects</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Custom Route Mapper (Highlight Project) -->
+                <div class="group bg-[#121826] border border-slate-800 rounded-2xl overflow-hidden hover:border-teal-500/40 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-md bg-teal-500/10 px-2 py-1 text-xs font-semibold text-teal-400 border border-teal-500/20">
+                                In Development
+                            </span>
+                            <span class="text-xs text-slate-500 font-mono">Subdomain Launch</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 group-hover:text-teal-400 transition-colors">Custom Running Route Mapping App</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            A custom web application built to parse GPX coordinate uploads, mapping complex running routes with dynamic telemetry layers. Incorporates interactive Leaflet.js mapping layers and elevation pace profiling graphs.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Python Flask</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Leaflet.js</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">GPX Parser</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Chart.js</span>
                         </div>
                     </div>
-                    <div class="project-image">
-                        <img src="{{ url_for('static', filename='img/bg-showcase-2.jpg') }}" alt="Generic Code Image">
-                    </div>
-                </div>
-            </li>
-
-            <!--Intel Internship-->
-            <li class="timeline_element project">
-                <div class="timeline_element-date">
-                    <time class="timeline_element-date-text">May 2016 - Jun 2018</time>
                 </div>
 
-                <div class="timeline_element-contents">
-                    <div class="project-text">
-                        <div class="project-title">Intel</div>
-                        <div class="project-subtitle">SDG Technical Intern</div>
-                        <div class="project-description">
-                            <p>As an intern at Intel, my primary goal was to assist Project Analysts by delivering
-                                solutions to provide faster time-to-insights via automation and data manipulation.
-                                During the semester, I worked at least 20 hours a week along with being a full-time
-                                student. Results achieved include the following:</p>
-                            <ul>
-                                <li>
-                                    Crafted a program to track projected vs. actual headcount through extrapolation
-                                    using Data Analysis Expressions (DAX) with the goal of projecting quarterly
-                                    operating expenses
-                                </li>
-                                </br>
-                                <li>
-                                    Constructed over 50 pre-silicon design indicators through SQL and PowerPivot for
-                                    mobile System-on-Chip (SoC) processors which were used by senior management to track
-                                    project milestones
-                                </li>
-                                </br>
-                                <li>
-                                    Optimized the team’s reports and scheduling data through the use of robotic process
-                                    automation in Visual Basic for Applications (VBA)
-                                </li>
-                            </ul>
-
+                <!-- AirGradient Data Ingestion Pipeline -->
+                <div class="group bg-[#121826] border border-slate-800 rounded-2xl overflow-hidden hover:border-teal-500/40 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-md bg-teal-500/10 px-2 py-1 text-xs font-semibold text-teal-400 border border-teal-500/20">
+                                Stream Processing
+                            </span>
+                            <a href="https://github.com/rsakalkale/air_gradient_data_ingestion_project" target="_blank" class="text-xs text-slate-500 hover:text-teal-400 font-mono flex items-center gap-1">
+                                <i data-lucide="github" class="w-3 h-3"></i> GitHub Repository
+                            </a>
                         </div>
-                    </div>
-                    <div class="project-image">
-                        <img src="{{ url_for('static', filename='img/Intel-logo.png') }}" alt="Intel Logo">
-                    </div>
-                </div>
-            </li>
-
-            <!--Texas DSP Website Maintain-->
-            <li class="timeline_element project">
-                <div class="timeline_element-date">
-                    <time class="timeline_element-date-text">Aug 2017 - May 2018</time>
-                </div>
-
-                <div class="timeline_element-contents">
-                    <div class="project-text">
-                        <div class="project-title">Texas Delta Sigma Pi</div>
-                        <div class="project-subtitle">VP of Information Technology</div>
-                        <div class="project-description">
-                            <ul>
-                                <li>
-                                    Maintained full-stack PHP website featuring and MVC driven web applications to
-                                    facilitate efficient chapter operations
-                                </li>
-                                </br>
-                                <li>
-                                    Built an integration with the Google Maps API which diplayed where members have
-                                    studied abroad in past semeseters
-                                </li>
-                                </br>
-                                <li>
-                                    Released a document management system via Drupal which made it easier for the
-                                    business to organize and file assets
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="project-image">
-                        <a href="https://www.texasdsp.org">
-                            <img src="{{ url_for('static', filename='img/TexasDSPBKBP.png') }}" alt="Texas DSP Home Page">
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-            <!--MIS 374 Client Project-->
-            <li class="timeline_element project">
-                <div class="timeline_element-date">
-                    <time class="timeline_element-date-text">Aug 2017 - Nov 2017</time>
-                </div>
-
-                <div class="timeline_element-contents">
-                    <div class="project-text">
-                        <div class="project-title">TexasLawHelp.com</div>
-                        <div class="project-subtitle">Client Project for Business Systems Development Course</div>
-                        <div class="project-description">
-                            <ul>
-                                <li>
-                                    Translated business requirements from product owner and parsed them into tangible
-                                    technical features and user stories
-                                </li>
-                                </br>
-                                <li>
-                                    Measured impact and scope of proposed changes through outlining benefits and return
-                                    analysis in the project charter document
-                                </li>
-                                </br>
-                                <li>
-                                    Released a document management system via Drupal which made it easier for the
-                                    business to organize and file assets
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="project-image">
-                        <a href="https://www.texaslawhelp.org">
-                            <img src="{{ url_for('static', filename='img/TxLawHelp.png') }}" alt="Texas Law Help Home Page">
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-            <!--MIS 333K Web App Project-->
-            <li class="timeline_element project">
-                <div class="timeline_element-date">
-                    <time class="timeline_element-date-text">Jan 2017 - May 2017</time>
-                </div>
-
-                <div class="timeline_element-contents">
-                    <div class="project-text">
-                        <div class="project-title">Longhorn Bank</div>
-                        <div class="project-subtitle">Mock Website for Web Application Developmnet Course (MIS 333K)
-                        </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>
-                                    Programmed an MVC web application in C# to create a mock bank and gathered relevant
-                                    business requirements with team
-                                </li>
-                                </br>
-                                <li>
-                                    Utilized GitHub to track changes, issues, features, and bugs in order to prioritize
-                                    the allocation of resources
-                                </li>
-                                </br>
-                                <li>
-                                    Scheduled weekly meetings with three others to delegate new tasks and report on the
-                                    status of existing work-in-progress
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="project-image">
-                        <a href="http://final-project-333k-group10.azurewebsites.net/">
-                            <img src="{{ url_for('static', filename='img/LonghornBank.png') }}" alt="MIS 333K - Longhorn Bank">
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-            <!--Thomson Reuters Internship-->
-            <li class="timeline_element project">
-                <div class="timeline_element-date">
-                    <time class="timeline_element-date-text">May 2015 - Aug 2015</time>
-                </div>
-
-                <div class="timeline_element-contents">
-                    <div class="project-text">
-                        <div class="project-title">Thomson Reuters</div>
-                        <div class="project-subtitle">QA Engineer Intern</div>
-                        <div class="project-description">
-                            <ul>
-                                <li>
-                                    Developed CI/CD pipelines for eight tax applications using Jenkins and Batch scripts
-                                    saving Deployment Admins two hours daily
-                                </li>
-                                </br>
-                                <li>
-                                    Awarded the “Most Innovative Idea” for voice-based navigation amongst a pool of 150
-                                    full-time employees and 20 teams
-                                </li>
-                                </br>
-                                <li>
-                                    Engineered program in C# and HTML which navigates Thomson Reuters products in order
-                                    to improve user experience
-                                </li>
-                            </ul>
-
+                        <h3 class="text-lg font-bold text-slate-100 group-hover:text-teal-400 transition-colors">AirGradient Data Ingestion Pipeline</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Designed and engineered a real-time data ingestion and stream processing pipeline to process high-velocity environmental metrics (PM2.5, CO2, temperature, humidity) from a DIY AirGradient sensor. Streamed telemetry data via Apache Kafka, processed payloads using Apache Spark, and persisted metrics into a Cassandra DB cluster, utilizing Prometheus and Grafana for system observability and Airflow for pipeline orchestration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Apache Kafka</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Apache Spark</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Cassandra DB</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Apache Airflow</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Prometheus & Grafana</span>
                         </div>
                     </div>
                 </div>
-            </li>
 
-            </ul>
-    </div>
-    </div>
-    </div>
-
-    <!-- Contact -->
-    <section id="contact" class="four">
-        <div class="container">
-
-            <header>
-                <h2>CONTACT</h2>
-            </header>
-
-            <form id="contact-form" action="{{ url_for('contact') }}" method="POST" class="contact-form">
-                <div class="row gtr-uniform">
-                    <div class="6u 12u$(mobile)">
-                        <input type="text" name="name" id="name" placeholder="Your Name" required />
+                <!-- TexasLawHelp -->
+                <div class="group bg-[#121826] border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-md bg-slate-800 px-2 py-1 text-xs font-semibold text-slate-400">
+                                Client Project
+                            </span>
+                            <span class="text-xs text-slate-500 font-mono">TexasLawHelp.com</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 group-hover:text-teal-400 transition-colors">Document Management & Systems Dev</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Translated client specifications into tangible software features. Designed a Drupal-based document repository enabling streamlined public asset filing and file searching logic.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Drupal CMS</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Agile SDLC</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">User Stories</span>
+                        </div>
                     </div>
-                    <div class="6u$ 12u$(mobile)">
-                        <input type="email" name="email" id="email" placeholder="Email" required />
+                </div>
+
+                <!-- Longhorn Bank -->
+                <div class="group bg-[#121826] border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 rounded-md bg-slate-800 px-2 py-1 text-xs font-semibold text-slate-400">
+                                Class Project
+                            </span>
+                            <span class="text-xs text-slate-500 font-mono">UT Austin MIS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 group-hover:text-teal-400 transition-colors">Longhorn Bank MVC App</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            A complete mock online banking web application built in C#. Integrated standard database state schemas to manage account actions, transaction logs, and secure balance calculations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">C# ASP.NET</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">SQL Server</span>
+                            <span class="px-2 py-0.5 text-[10px] font-semibold bg-slate-800 text-slate-300 rounded">Azure WebApps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-[#121826] border border-slate-800 rounded-3xl p-8 space-y-8 scroll-mt-24">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl font-bold text-slate-100">Get In Touch</h2>
+                <p class="text-sm text-slate-400">Have a project idea, question, or just want to connect?</p>
+            </div>
+            
+            <form id="contact-form" action="{{ url_for('contact') }}" method="POST" class="max-w-xl mx-auto space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="name" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Name</label>
+                        <input type="text" name="name" id="name" required
+                            class="w-full rounded-xl bg-[#0b0f19] border border-slate-850 px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-teal-500 transition-colors"
+                            placeholder="Your Name" />
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Email</label>
+                        <input type="email" name="email" id="email" required
+                            class="w-full rounded-xl bg-[#0b0f19] border border-slate-850 px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-teal-500 transition-colors"
+                            placeholder="your.email@example.com" />
                         <input type="hidden" name="cid" id="cid" value="" />
                     </div>
-                    <div class="12u$">
-                        <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
-                    </div>
-                    <div class="12u$">
-                        <button type="submit" class="button primary">Send Message</button>
-                    </div>
                 </div>
+                <div class="space-y-2">
+                    <label for="message" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Message</label>
+                    <textarea name="message" id="message" rows="5" required
+                        class="w-full rounded-xl bg-[#0b0f19] border border-slate-850 px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-teal-500 transition-colors resize-none"
+                        placeholder="Type your message here..."></textarea>
+                </div>
+                
                 <input type="hidden" name="_subject" value="New message from portfolio website" />
                 <input type="hidden" name="_next" value="https://sakalkale.com/success.html" />
-                <input type="text" name="_gotcha" style="display:none" />
-            </form>
+                <input type="text" name="_gotcha" class="hidden" />
 
-        </div>
-    </section>
+                <div class="text-center">
+                    <button type="submit"
+                        class="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-8 py-3.5 text-sm font-semibold text-white hover:bg-teal-500 hover:-translate-y-0.5 transition-all">
+                        <i data-lucide="send" class="w-4 h-4"></i> Send Message
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <div id="footer">
+    <footer class="border-t border-slate-800/60 bg-[#070b13] py-12 mt-12">
+        <div class="mx-auto max-w-5xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="text-xs text-slate-500">
+                &copy; Copyright 2026 Rohan Sakalkale &bull; All rights reserved.
+            </p>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/rsakalkale" target="_blank" class="text-slate-400 hover:text-slate-200 transition-colors">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rohan-sakalkale/" target="_blank" class="text-slate-400 hover:text-teal-400 transition-colors">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
-        <!-- Copyright -->
-        <ul class="copyright">
-            <li>© Copyright 2026 Rohan Sakalkale – All rights reserved. </li>
-        </ul>
-
-    </div>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/fontawesome-all.js') }}"></script>
     <script>
+        // Initialize Lucide SVGs
+        lucide.createIcons();
+
+        // Vanilla AJAX Contact form Submission (keeps existing client logic)
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById('contact-form');
-
-            if (!form) {
-                return;
-            }
+            if (!form) return;
 
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
-
                 var formData = new FormData(form);
 
                 fetch(form.action, {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 }).then(function (response) {
                     return response.json().then(function (data) {
                         if (response.ok && data.success) {
@@ -846,8 +491,8 @@
                             throw new Error(data.error || 'There was a problem sending your message. Please try again.');
                         }
                     });
-                }).catch(function () {
-                    alert('There was a problem sending your message. Please try again.');
+                }).catch(function (err) {
+                    alert(err.message || 'There was a problem sending your message. Please try again.');
                 });
             });
         });
